@@ -18,15 +18,16 @@ renderStorage()
 myButton.addEventListener('click', () => {
     let textValue = text.value;
     let backgroundValue = 'placeholder';
-    let indexValue = nStorageLength + 1;
+    let indexValue = nStorageLength;
 
     let data = new Object();
-    data.index = indexValue;
+    data.index = indexValue + 1;
     data.text = textValue;
     data.background = backgroundValue
 
+
     myPostIt(data);
-    nStorageLength++;
+    nStorageLength++
 })
 
 
@@ -43,10 +44,10 @@ mainSection.addEventListener('click', function (e) {
             let retrieveData = localStorage.getItem(e.target.getAttribute('data-id'));
             let retrieveObject = JSON.parse(retrieveData);
 
+            e.target.parentNode.parentNode.remove();
             localStorage.setItem(e.target.getAttribute('data-id'), JSON.stringify(retrieveObject));
             localStorage.removeItem(e.target.getAttribute('data-id'));
 
-            e.target.parentNode.parentNode.remove();
         }
     }
 })
@@ -125,16 +126,16 @@ function myPostIt(data) {
                                     </div>
                              </section>`
 
-    let truncDifferenceLength = nStorageLength + 1;
-    localStorage.setItem(truncDifferenceLength, JSON.stringify(data));
+    localStorage.setItem(nStorageLength + 1, JSON.stringify(data));
 }
 
 
 
 function renderStorage() {
 
-    for (let i = 0; i <= localStorage.length + 1; i++) {
-        if (localStorage.getItem(i) != null) {
+
+    for (let i = 0; i <= localStorage.length; i++) {
+        if (localStorage.getItem(i) !== null ) {
             let retrieveData = localStorage.getItem(i);
             let retrieveObject = JSON.parse(retrieveData);
 
@@ -153,6 +154,8 @@ function renderStorage() {
                                                             <div class="color c6">    </div>
                                                         </div>
                                                 </section>`
+        } else if (localStorage.getItem(i) === -1) {
+            console.log('error')
         }
     }
 }
