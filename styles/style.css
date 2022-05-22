@@ -4,6 +4,7 @@
     color: rgb(201, 197, 197);
 }
 
+
 .main-sec {
     display: flex;
     flex-direction: row;
@@ -60,7 +61,6 @@ h5 {
     display: flex;
     flex-direction: row;
     margin-left: 77%;
-    background-color: rgb(87, 84, 84);
 }
 
 .deletePost {
@@ -112,7 +112,35 @@ h5 {
     background-color: white;
 }
 
+.c-green {
+    background-color: green;
+}
 
+.c-orange {
+    background-color: rgb(246, 184, 70);
+    background: rgb(246, 184, 70);
+    color: #333;
+}
+
+.c-purple {
+    background-color: rgb(153, 102, 255);
+    background: rgb(153, 102, 255);
+}
+
+.c-red {
+    background-color: rgb(240, 61, 61);
+    background: rgb(240, 61, 61);
+}
+
+.c-blue {
+    background-color: blue;
+    background: blue;
+}
+
+.c-white {
+    background-color: white;
+    background: white;
+}
 
 
 .buttons {

@@ -1,8 +1,8 @@
 // General Variables
 const myButton = document.querySelector('.button');
 const clrButton = document.querySelector('.clearBtn');
-let text = document.querySelector('#text');
-let mainSection = document.querySelector('.main-sec')
+const text = document.querySelector('#text');
+const mainSection = document.querySelector('.main-sec')
 let nStorageLength = localStorage.length;
 let nStorage = nStorageLength.toString();
 
@@ -66,39 +66,42 @@ mainSection.addEventListener('click', function (e) {
 mainSection.addEventListener('click', function (e) {
     if (e.target.classList.contains('color')) {
 
-        let color = e.target.classList[1];
+        const background = e.target.parentNode.parentNode.classList;
+        const backgroundColor = e.target.parentNode.parentNode.firstElementChild.classList;
+        const colorCSS = e.target.parentNode.parentNode.firstElementChild.classList;
+
+        const color = e.target.classList[1];
 
         switch (color) {
             case 'c1':
-                e.target.parentNode.parentNode.style.background = 'green';
-                e.target.parentNode.parentNode.firstElementChild.style.backgroundColor = 'green';
-                e.target.parentNode.previousElementSibling.style.backgroundColor = 'green';
+                background.replace(background[2], 'c-green');
+                backgroundColor.replace(backgroundColor[1], 'c-green');
+                colorCSS.replace(colorCSS[1], 'c-green');
                 break;
             case 'c2':
-                e.target.parentNode.parentNode.style.background = 'rgb(246, 184, 70)';
-                e.target.parentNode.parentNode.firstElementChild.style.backgroundColor = 'rgb(246, 184, 70)';
-                e.target.parentNode.previousElementSibling.style.backgroundColor = 'rgb(246, 184, 70)';
-                e.target.parentNode.parentNode.firstElementChild.style.color = '#333'
+                background.replace(background[2], 'c-orange');
+                backgroundColor.replace(backgroundColor[1], 'c-orange');
+                colorCSS.replace(colorCSS[1], 'c-orange');                
                 break;
             case 'c3':
-                e.target.parentNode.parentNode.style.background = 'rgb(153, 102, 255)';
-                e.target.parentNode.parentNode.firstElementChild.style.backgroundColor = 'rgb(153, 102, 255)';
-                e.target.parentNode.previousElementSibling.style.backgroundColor = 'rgb(153, 102, 255)';
+                background.replace(background[2], 'c-purple');
+                backgroundColor.replace(backgroundColor[1], 'c-purple');
+                colorCSS.replace(colorCSS[1], 'c-purple');  
                 break;
             case 'c4':
-                e.target.parentNode.parentNode.style.background = 'rgb(240, 61, 61)';
-                e.target.parentNode.parentNode.firstElementChild.style.backgroundColor = 'rgb(240, 61, 61)';
-                e.target.parentNode.previousElementSibling.style.backgroundColor = 'rgb(240, 61, 61)';
+                background.replace(background[2], 'c-red');
+                backgroundColor.replace(backgroundColor[1], 'c-red');
+                colorCSS.replace(colorCSS[1], 'c-red');  
                 break;
             case 'c5':
-                e.target.parentNode.parentNode.style.background = 'blue';
-                e.target.parentNode.parentNode.firstElementChild.style.backgroundColor = 'blue';
-                e.target.parentNode.previousElementSibling.style.backgroundColor = 'blue';
+                background.replace(background[2], 'c-blue');
+                backgroundColor.replace(backgroundColor[1], 'c-blue');
+                colorCSS.replace(colorCSS[1], 'c-blue');  
                 break;
             case 'c6':
-                e.target.parentNode.parentNode.style.background = 'white';
-                e.target.parentNode.parentNode.firstElementChild.style.backgroundColor = 'white';
-                e.target.parentNode.previousElementSibling.style.backgroundColor = 'white';
+                background.replace(background[2], 'c-white');
+                backgroundColor.replace(backgroundColor[1], 'c-white');
+                colorCSS.replace(colorCSS[1], 'c-white');  
                 break;
             default:
                 alert('error');
@@ -110,13 +113,13 @@ mainSection.addEventListener('click', function (e) {
 function myPostIt(data) {
 
 
-    mainSection.innerHTML += `<section class='msec left-sec' data-id='${data.index}'>
+    mainSection.innerHTML += `<section class='msec left-sec c-default' data-id='${data.index}'>
                                 <h3 class='h3'>${data.text}</h3>
-                                <div class='bottomDiv'>
+                                <div class='bottomDiv c-grey'>
                                     <button class='optionButton'>Color</button>
                                     <button class='deletePost' data-id=${data.index}>Delete</button>
                                 </div>
-                                    <div class="modalColor">
+                                    <div class="modalColor" style="display: none">
                                         <div class="color c1">    </div>
                                         <div class="color c2">    </div>
                                         <div class="color c3">    </div>
@@ -139,13 +142,13 @@ function renderStorage() {
             let retrieveData = localStorage.getItem(i);
             let retrieveObject = JSON.parse(retrieveData);
 
-            mainSection.innerHTML += `<section class='msec left-sec' data-id='${retrieveObject.index}'>
-                                                    <h3 class='h3'>${retrieveObject.text}</h3>
-                                                    <div class='bottomDiv'>
+            mainSection.innerHTML += `<section class='msec left-sec c-default' data-id='${retrieveObject.index}'>
+                                                    <h3 class='h3 c-grey'>${retrieveObject.text}</h3>
+                                                    <div class='bottomDiv c-grey'>
                                                         <button class='optionButton'>Color</button>
                                                         <button class='deletePost' data-id='${retrieveObject.index}'>Delete</button>
                                                     </div>
-                                                        <div class="modalColor">
+                                                        <div class="modalColor" style="display: none">
                                                             <div class="color c1">    </div>
                                                             <div class="color c2">    </div>
                                                             <div class="color c3">    </div>
