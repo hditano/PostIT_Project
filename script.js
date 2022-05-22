@@ -133,7 +133,7 @@ function myPostIt(data) {
 
 function renderStorage() {
 
-    for (let i = 0; i <= localStorage.length; i++) {
+    for (let i = 0; i <= localStorage.length + 1; i++) {
         if (localStorage.getItem(i) != null) {
             let retrieveData = localStorage.getItem(i);
             let retrieveObject = JSON.parse(retrieveData);
