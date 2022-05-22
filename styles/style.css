@@ -1,9 +1,11 @@
 * {
     box-sizing: border-box;
-    background-color: rgb(235, 214, 132);
     color: rgb(201, 197, 197);
 }
 
+body {
+    background-color: rgb(235, 214, 132);
+}
 
 .main-sec {
     display: flex;
