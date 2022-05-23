@@ -16,7 +16,8 @@ let dataArray = {};
 
 
 
-renderStorage()
+
+renderStorage();
 
 myButton.addEventListener('click', () => {
     let textValue = text.value;
@@ -153,31 +154,26 @@ function myPostIt(data) {
 }
 
 
-
 function renderStorage() {
+    Object.keys(localStorage).forEach(function (key) {
+        let retrieveData = localStorage.getItem(key);
+        let retrieveObject = JSON.parse(retrieveData);
 
+                    mainSection.innerHTML += `<div class='msec left-sec ${retrieveObject.background}' data-id='${retrieveObject.index}'>
+                                                    <h3 class='h3 ${retrieveObject.background}'>${retrieveObject.text}</h3>
+                                                    <div class='bottomDiv ${retrieveObject.background}'>
+                                                        <button class='optionButton'>Color</button>
+                                                        <button class='deletePost' data-id='${retrieveObject.index}'>Delete</button>
+                                                    </div>
+                                                        <div class="modalColor" style="display: none">
+                                                            <div class="color c1">    </div>
+                                                            <div class="color c2">    </div>
+                                                            <div class="color c3">    </div>
+                                                            <div class="color c4">    </div>
+                                                            <div class="color c5">    </div>
+                                                            <div class="color c6">    </div>
+                                                        </div>
+                                                </div>`
 
-    for (let i = 0; i <= localStorage.length; ++i) {
-        if (localStorage.getItem(i) !== null) {
-            let retrieveData = localStorage.getItem(i);
-            let retrieveObject = JSON.parse(retrieveData);
-
-            mainSection.innerHTML += `<div class='msec left-sec ${retrieveObject.background}' data-id='${retrieveObject.index}'>
-                                            <h3 class='h3 ${retrieveObject.background}'>${retrieveObject.text}</h3>
-                                            <div class='bottomDiv ${retrieveObject.background}'>
-                                                <button class='optionButton'>Color</button>
-                                                <button class='deletePost' data-id='${retrieveObject.index}'>Delete</button>
-                                            </div>
-                                                <div class="modalColor" style="display: none">
-                                                    <div class="color c1">    </div>
-                                                    <div class="color c2">    </div>
-                                                    <div class="color c3">    </div>
-                                                    <div class="color c4">    </div>
-                                                    <div class="color c5">    </div>
-                                                    <div class="color c6">    </div>
-                                                </div>
-                                        </div>`
-        }
-
-    }
+    })
 }
