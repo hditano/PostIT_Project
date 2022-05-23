@@ -24,7 +24,7 @@ myButton.addEventListener('click', () => {
     let indexValue = nStorageLength;
 
     let data = new Object();
-    data.index = indexValue + 1;
+    data.index = indexValue;
     data.text = textValue;
     data.background = backgroundValue
 
@@ -66,7 +66,7 @@ mainSection.addEventListener('click', function (e) {
 
 
 mainSection.addEventListener('click', function (e) {
-    if (e.target.classList.contains('color')) {   
+    if (e.target.classList.contains('color')) {
 
         const background = e.target.parentNode.parentNode.classList;
         const backgroundColor = e.target.parentNode.parentNode.firstElementChild.classList;
@@ -117,21 +117,22 @@ mainSection.addEventListener('click', function (e) {
     }
 })
 
-function updateBackground(index, backgroundData ) {
+function updateBackground(index, backgroundData) {
 
     let retrieveData = localStorage.getItem(index);
     let retrieveObject = JSON.parse(retrieveData);
 
     retrieveObject.background = backgroundData;
 
-    localStorage.setItem(index,JSON.stringify(retrieveObject));
+    localStorage.setItem(index, JSON.stringify(retrieveObject));
 
 }
 
 function myPostIt(data) {
 
+    if (localStorage.getItem(data.index) === null) {
 
-    mainSection.innerHTML += `<div class='msec left-sec c-grey' data-id='${data.index}'>
+        mainSection.innerHTML += `<div class='msec left-sec c-grey' data-id='${data.index}'>
                                 <h3 class='h3 c-grey'>${data.text}</h3>
                                 <div class='bottomDiv c-grey'>
                                     <button class='optionButton'>Color</button>
@@ -146,15 +147,17 @@ function myPostIt(data) {
                                         <div class="color c6">    </div>
                                     </div>
                              </div>`
+    }
 
-    localStorage.setItem(nStorageLength + 1, JSON.stringify(data));
+    localStorage.setItem(nStorageLength, JSON.stringify(data));
 }
 
 
 
 function renderStorage() {
 
-    for (let i = 1; i <= localStorage.length; i++) {
+
+    for (let i = 0; i <= localStorage.length; ++i) {
         if (localStorage.getItem(i) !== null) {
             let retrieveData = localStorage.getItem(i);
             let retrieveObject = JSON.parse(retrieveData);
