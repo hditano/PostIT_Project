@@ -59,10 +59,12 @@ h5 {
     margin: 2.5em 0 0 0 ;
 }
 
+
 .bottomDiv {
     display: flex;
     flex-direction: row;
     margin-left: 77%;
+    background-color: rgb(235, 214, 132);;
 }
 
 .deletePost {
@@ -71,15 +73,17 @@ h5 {
     height: auto;
     width: 5em;
     margin-left: 1em;
+    border: 0px;
 }
 
 .optionButton {
     height: auto;
     width: 5em;
-    background-color: red;
+    background-color: rgb(197, 172, 71);
     border: 0px;
-    border-color: #333;
+    color: rgb(87, 84, 84);;
 }
+
 
 .modalColor {
     position: absolute;
@@ -94,6 +98,8 @@ h5 {
     width: 29px;
     height: 30px;
 }
+
+/* CSS Modal Colors *//
 
 .c1 {
     background-color: green;
@@ -116,6 +122,7 @@ h5 {
 
 .c-green {
     background-color: green;
+    background: green;
 }
 
 .c-orange {

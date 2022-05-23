@@ -72,6 +72,7 @@ mainSection.addEventListener('click', function (e) {
         const background = e.target.parentNode.parentNode.classList;
         const backgroundColor = e.target.parentNode.parentNode.firstElementChild.classList;
         const colorCSS = e.target.parentNode.parentNode.firstElementChild.classList;
+        const divBackground = e.target.parentNode.parentNode.firstElementChild.nextElementSibling.classList;
 
         const color = e.target.classList[1];
 
@@ -80,36 +81,42 @@ mainSection.addEventListener('click', function (e) {
                 background.replace(background[2], 'c-green');
                 backgroundColor.replace(backgroundColor[1], 'c-green');
                 colorCSS.replace(colorCSS[1], 'c-green');
+                divBackground.replace(divBackground[1], 'c-green');
                 updateBackground(e.target.parentNode.parentNode.getAttribute('data-id'), 'c-green')
                 break;
             case 'c2':
                 background.replace(background[2], 'c-orange');
                 backgroundColor.replace(backgroundColor[1], 'c-orange');
                 colorCSS.replace(colorCSS[1], 'c-orange');
+                divBackground.replace(divBackground[1], 'c-orange');
                 updateBackground(e.target.parentNode.parentNode.getAttribute('data-id'), 'c-orange')
                 break;
             case 'c3':
                 background.replace(background[2], 'c-purple');
                 backgroundColor.replace(backgroundColor[1], 'c-purple');
                 colorCSS.replace(colorCSS[1], 'c-purple');
+                divBackground.replace(divBackground[1], 'c-purple');
                 updateBackground(e.target.parentNode.parentNode.getAttribute('data-id'), 'c-purple')
                 break;
             case 'c4':
                 background.replace(background[2], 'c-red');
                 backgroundColor.replace(backgroundColor[1], 'c-red');
                 colorCSS.replace(colorCSS[1], 'c-red');
+                divBackground.replace(divBackground[1], 'c-red');
                 updateBackground(e.target.parentNode.parentNode.getAttribute('data-id'), 'c-red')
                 break;
             case 'c5':
                 background.replace(background[2], 'c-blue');
                 backgroundColor.replace(backgroundColor[1], 'c-blue');
                 colorCSS.replace(colorCSS[1], 'c-blue');
+                divBackground.replace(divBackground[1], 'c-blue');
                 updateBackground(e.target.parentNode.parentNode.getAttribute('data-id'), 'c-blue')
                 break;
             case 'c6':
                 background.replace(background[2], 'c-white');
                 backgroundColor.replace(backgroundColor[1], 'c-white');
                 colorCSS.replace(colorCSS[1], 'c-white');
+                divBackground.replace(divBackground[1], 'c-white');
                 updateBackground(e.target.parentNode.parentNode.getAttribute('data-id'), 'c-white')
                 break;
             default:
@@ -133,21 +140,21 @@ function myPostIt(data) {
 
     if (localStorage.getItem(data.index) === null) {
 
-        mainSection.innerHTML += `<div class='msec left-sec c-grey' data-id='${data.index}'>
-                                <h3 class='h3 c-grey'>${data.text}</h3>
-                                <div class='bottomDiv c-grey'>
-                                    <button class='optionButton'>Color</button>
-                                    <button class='deletePost' data-id='${data.index}'>Delete</button>
-                                </div>
-                                    <div class="modalColor" style="display: none">
-                                        <div class="color c1">    </div>
-                                        <div class="color c2">    </div>
-                                        <div class="color c3">    </div>
-                                        <div class="color c4">    </div>
-                                        <div class="color c5">    </div>
-                                        <div class="color c6">    </div>
-                                    </div>
-                             </div>`
+        mainSection.innerHTML +=  `<div class='msec left-sec c-grey' data-id='${data.index}'>
+                                        <h3 class='h3 c-grey'>${data.text}</h3>
+                                        <div class='bottomDiv c-grey'>
+                                            <button class='optionButton'>Color</button>
+                                            <button class='deletePost' data-id='${data.index}'>Delete</button>
+                                        </div>
+                                        <div class="modalColor" style="display: none">
+                                            <div class="color c1">    </div>
+                                            <div class="color c2">    </div>
+                                            <div class="color c3">    </div>
+                                            <div class="color c4">    </div>
+                                            <div class="color c5">    </div>
+                                            <div class="color c6">    </div>
+                                        </div>
+                                    </div>`
     }
 
     localStorage.setItem(nStorageLength, JSON.stringify(data));
